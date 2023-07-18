@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum DocumentType {
+  markdown
+  html
+  pdf
+  docx
+  text
+}
+
+model Document {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  author      String @default("Chưa rõ")
+
+  content  String
+  type     DocumentType @default(text)
+  marked   Boolean      @default(false)
+  keywords String[]
+  category String[]
+  status   String       @default("Đã xuất bản")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
