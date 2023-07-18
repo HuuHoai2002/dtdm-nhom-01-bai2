@@ -2,8 +2,6 @@
 
 import useBoolean from "@/hooks/use-boolean";
 import React from "react";
-import EyeOffIcon from "../icons/EyeOffIcon";
-import EyeOnIcon from "../icons/EyeOnIcon";
 import Input from "./input";
 
 const InputPassword = React.forwardRef<HTMLInputElement>((props, ref) => {
@@ -14,7 +12,6 @@ const InputPassword = React.forwardRef<HTMLInputElement>((props, ref) => {
       ref={ref}
       {...props}
       type={value ? "text" : "password"}
-      appendIcon={value ? <EyeOffIcon /> : <EyeOnIcon />}
       appendIconClick={toggle}
     />
   );
